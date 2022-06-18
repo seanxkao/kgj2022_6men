@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7caf2828a2ce5a458e3b23bb46a1a50, type: 3}
+  m_Name: New Flat Sprite Sheet
+  m_EditorClassIdentifier: 
+  topLeft: {fileID: 6008755849024553855, guid: f35f1e15303eca248a1e3c1a8474514d, type: 3}
+  topMid: {fileID: 4121941241734358017, guid: f35f1e15303eca248a1e3c1a8474514d, type: 3}
+  topRight: {fileID: -1733274276621596944, guid: f35f1e15303eca248a1e3c1a8474514d,
+    type: 3}
+  midLeft: {fileID: -1707755975674792047, guid: f35f1e15303eca248a1e3c1a8474514d,
+    type: 3}
+  midMid: {fileID: 8791468809558621453, guid: f35f1e15303eca248a1e3c1a8474514d, type: 3}
+  midRight: {fileID: -832514747781538365, guid: f35f1e15303eca248a1e3c1a8474514d,
+    type: 3}
+  bottomLeft: {fileID: 2307248174122735508, guid: f35f1e15303eca248a1e3c1a8474514d,
+    type: 3}
+  bottomMid: {fileID: 8991365642634801332, guid: f35f1e15303eca248a1e3c1a8474514d,
+    type: 3}
+  bottomRight: {fileID: 6292352553851482297, guid: f35f1e15303eca248a1e3c1a8474514d,
+    type: 3}
+  horizontalLeft: {fileID: -1807201407833685431, guid: f35f1e15303eca248a1e3c1a8474514d,
+    type: 3}
+  horizontalMid: {fileID: 5167805636196362633, guid: f35f1e15303eca248a1e3c1a8474514d,
+    type: 3}
+  horizontalRight: {fileID: -4613630677638295625, guid: f35f1e15303eca248a1e3c1a8474514d,
+    type: 3}
+  verticalLeft: {fileID: 4438859553938676302, guid: f35f1e15303eca248a1e3c1a8474514d,
+    type: 3}
+  verticalMid: {fileID: 9094865689532351583, guid: f35f1e15303eca248a1e3c1a8474514d,
+    type: 3}
+  verticalRight: {fileID: 724405987382932402, guid: f35f1e15303eca248a1e3c1a8474514d,
+    type: 3}
+  isolated: {fileID: 6185541433248078365, guid: f35f1e15303eca248a1e3c1a8474514d,
+    type: 3}
