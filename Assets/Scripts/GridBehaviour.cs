@@ -1,22 +1,42 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GridBehaviour : MonoBehaviour
 {
-    public GridData data { get; private set; }
-    public Collider2D c2d { get; protected set; }
-    public SpriteRenderer sr { get; protected set; }
-    public virtual void Construct(GridData data)
+    public Collider c2d { get; protected set; }
+    public Image image { get; protected set; }
+
+    private void Awake() 
     {
-        this.data = data; 
-        this.c2d = gameObject.AddComponent(typeof(BoxCollider2D)) as BoxCollider2D;
-        this.sr = gameObject.AddComponent(typeof(SpriteRenderer)) as SpriteRenderer;
-        sr.sprite = data.flatSpriteSheet.GetSprite(FlatSpriteSheet.Mapping.midMid);
+        c2d = GetComponent<Collider>();
+        image = GetComponentInChildren<Image>();    
     }
 
-    public virtual void UpdateGrid(SectionAxis axis)
+    private void Start() 
     {
-        sr.sprite = data.flatSpriteSheet.GetSprite(FlatSpriteSheet.Mapping.midMid);
+        var game = Game.instance;
+        if(game != null)
+        {
+            SetImageAxis(game.projectionAxis);
+            game.AxisChange.AddListener(SetImageAxis);
+        }
+    }
+
+    private void SetImageAxis(ProjectionAxis axis)
+    {
+        switch(axis)
+        {
+            case ProjectionAxis.X:
+                image.rectTransform.rotation = Quaternion.Euler(0,-90,0);
+                break;
+            case ProjectionAxis.Y:
+                image.rectTransform.rotation = Quaternion.Euler(90,180,0);
+                break;
+            case ProjectionAxis.Z:
+                image.rectTransform.rotation = Quaternion.Euler(0,180,0);
+                break;
+        }
     }
 }

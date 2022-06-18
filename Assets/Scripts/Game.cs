@@ -1,141 +1,128 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Game : MonoBehaviour
 {
-    [SerializeField]
-    private GridData mockup;
-    [SerializeField]
-    private Vector3Int playerCoordinate = Vector3Int.zero;
-    [Space(20)]
-    [SerializeField]
-    private LevelData levelData;
-    [SerializeField]
-    private float gridSize = 1;
-    [SerializeField]
-    private GameObject player;
+    public static Game instance = null;
 
-    private RuntimeLevel runtimeLevel = null;
-    private SectionAxis viewAxis = SectionAxis.Z;
+    private GameObject levelParent;
+    private Camera cam = null;
+    private List<GridBehaviour> grids = new List<GridBehaviour>();
 
-    private void Start() 
+    public float minX { get; private set; } = float.MaxValue;
+    public float maxX { get; private set; } = float.MinValue;
+    public float minY { get; private set; } = float.MaxValue;
+    public float maxY { get; private set; } = float.MinValue;
+    public float minZ { get; private set; } = float.MaxValue;
+    public float maxZ { get; private set; } = float.MinValue;
+    
+    public ProjectionAxis projectionAxis { get; private set; } = ProjectionAxis.Z;
+    public GameEvent<ProjectionAxis> AxisChange = new GameEvent<ProjectionAxis>();
+
+    private void Awake() 
     {
-        //ReadLevel();
-        ReadMockUpLevel();
-        ShowSection();    
+        if(instance == null)
+        {
+            instance = this;
+            DontDestroyOnLoad(this);
+        }
+        else
+        {
+            Destroy(this);
+            return;
+        }
+        FindAllGrids();
+        ShowProjection();
     }
 
     private void Update() 
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            viewAxis = SectionAxis.X;
-            ShowSection();
+            projectionAxis = ProjectionAxis.X;
+            ShowProjection();
+            AxisChange.Invoke(projectionAxis);
         }
         if(Input.GetKeyDown(KeyCode.Alpha2))
         {
-            viewAxis = SectionAxis.Y;
-            ShowSection();
+            projectionAxis = ProjectionAxis.Y;
+            ShowProjection();
+            AxisChange.Invoke(projectionAxis);
         }
-        if(Input.GetKeyDown(KeyCode.Alpha3))
+        if(Input.GetKeyDown(KeyCode.Alpha3)) 
         {
-            viewAxis = SectionAxis.Z;
-            ShowSection();
-        }
+            projectionAxis = ProjectionAxis.Z;
+            ShowProjection();
+            AxisChange.Invoke(projectionAxis);
+        }  
     }
 
-    public void ReadLevel()
+    private void FindAllGrids()
     {
-        runtimeLevel = levelData.ConvertToRuntime(transform);
-        playerCoordinate = levelData.startingPoint;
-    }
+        grids = FindObjectsOfType<GridBehaviour>().ToList();
 
-    public void ReadMockUpLevel()
-    {
-        runtimeLevel = new RuntimeLevel(9,9,9);
-        for(int i = 0; i < 9; i++)
+        minX = float.MaxValue;
+        maxX = float.MinValue;
+        minY = float.MaxValue;
+        maxY = float.MinValue;
+        minZ = float.MaxValue;
+        maxZ = float.MinValue;
+        foreach(var grid in grids)
         {
-            for(int j = 0; j < 9; j++)
-            {
-                for(int k = 0; k < 9; k++)
-                {
-                    if(i == 0 || i == 8 || j == 0 || j == 8 || k == 0 || k == 8 || (i == 4 && j == 4 && k == 4))
-                    {
-                        runtimeLevel.gridBehaviours[i,j,k] = MonoBehaviour.Instantiate(mockup.gridBehaviour, transform);
-                        runtimeLevel.gridBehaviours[i,j,k].Construct(mockup);
-                        runtimeLevel.gridBehaviours[i,j,k].gameObject.SetActive(false);
-                    }
-                    else
-                        runtimeLevel.gridBehaviours[i,j,k] = null;
-                }
-            }
+            minX = Mathf.Min(minX, grid.transform.position.x);
+            maxX = Mathf.Max(maxX, grid.transform.position.x);
+            minY = Mathf.Min(minY, grid.transform.position.y);
+            maxY = Mathf.Max(maxY, grid.transform.position.y);
+            minZ = Mathf.Min(minZ, grid.transform.position.z);
+            maxZ = Mathf.Max(maxZ, grid.transform.position.z);
         }
-        playerCoordinate = new Vector3Int(1,1,1);
+
+        levelParent = new GameObject();
+        levelParent.transform.position = new Vector3(minX + maxX, minX + maxY, minZ + maxZ) / 2f;
+        foreach(var grid in grids)
+            grid.transform.SetParent(levelParent.transform);
     }
 
-    public void ShowSection()
+    void ShowProjection()
     {
-        if(runtimeLevel.InvalidPosition(playerCoordinate))
-            return;
-
-        runtimeLevel.HideAll();
-        Debug.Log("fuck");
+        if(cam == null)
+            cam = Camera.main;
         
-        float halfX;
-        float halfY;
-        if(viewAxis == SectionAxis.X)
+        cam.transform.position = levelParent.transform.position;
+
+        switch(projectionAxis)
         {
-            halfX = (runtimeLevel.zLength - 1) * gridSize / 2f;
-            halfY = (runtimeLevel.yLength - 1) * gridSize / 2f;
-            for(int i = 0; i < runtimeLevel.zLength; i ++)
-            {
-                for(int j = 0; j < runtimeLevel.yLength; j ++)
-                {
-                    if(runtimeLevel.gridBehaviours[playerCoordinate.x,i,j] != null)
-                    {
-                        runtimeLevel.gridBehaviours[playerCoordinate.x,i,j].transform.localPosition = new Vector3(halfX - gridSize * i, -halfY + gridSize * j);
-                        runtimeLevel.gridBehaviours[playerCoordinate.x,i,j].gameObject.SetActive(true);
-                    }
-                }
-            }
-            player.transform.position = new Vector3(halfX - playerCoordinate.z * gridSize, -halfY + playerCoordinate.y * gridSize);
+            case ProjectionAxis.X:
+                cam.transform.position += Vector3.right * 100;
+                cam.transform.rotation = Quaternion.Euler(0,270,0);
+                break;
+            case ProjectionAxis.Y:
+                cam.transform.position += Vector3.up * 100;
+                cam.transform.rotation = Quaternion.Euler(90,0,180);
+                break;
+            case ProjectionAxis.Z:
+                cam.transform.position += Vector3.forward * 100;
+                cam.transform.rotation = Quaternion.Euler(0,180,0);
+                break;
         }
-        if(viewAxis == SectionAxis.Z)
-        {
-            halfX = (runtimeLevel.xLength - 1) * gridSize / 2f;
-            halfY = (runtimeLevel.yLength - 1) * gridSize / 2f;
-            for(int i = 0; i < runtimeLevel.xLength; i ++)
-            {
-                for(int j = 0; j < runtimeLevel.yLength; j ++)
-                {
-                    if(runtimeLevel.gridBehaviours[i,j,playerCoordinate.z] != null)
-                    {
-                        runtimeLevel.gridBehaviours[i,j,playerCoordinate.z].transform.localPosition = new Vector3(-halfX + gridSize * i, -halfY + gridSize * j);
-                        runtimeLevel.gridBehaviours[i,j,playerCoordinate.z].gameObject.SetActive(true);
-                    }
-                }
-            }
-            player.transform.position = new Vector3(-halfX + playerCoordinate.x * gridSize, -halfY + playerCoordinate.y * gridSize);
-        }
-        if(viewAxis == SectionAxis.Y)
-        {
-            halfX = (runtimeLevel.xLength - 1) * gridSize / 2f;
-            halfY = (runtimeLevel.zLength - 1) * gridSize / 2f;
-            for(int i = 0; i < runtimeLevel.xLength; i ++)
-            {
-                for(int j = 0; j < runtimeLevel.zLength; j ++)
-                {
-                    if(runtimeLevel.gridBehaviours[i,playerCoordinate.y,j] != null)
-                        continue;
-                    if(runtimeLevel.gridBehaviours[i,playerCoordinate.y - 1,j] != null)
-                    {
-                        runtimeLevel.gridBehaviours[i,playerCoordinate.y - 1,j].transform.localPosition = new Vector3(-halfX + gridSize * i, -halfY + gridSize * j);
-                        runtimeLevel.gridBehaviours[i,playerCoordinate.y - 1,j].gameObject.SetActive(true);
-                    }
-                }
-            }
-            player.transform.position = new Vector3(-halfX + playerCoordinate.x * gridSize, -halfY + playerCoordinate.z * gridSize);
-        }
+    }
+
+    public bool InvalidPosition(Vector3 position, out Vector3 nearest)
+    {
+        var result = position.x > maxX || 
+                     position.x < minX ||  
+                     position.y < minY || 
+                     position.z > maxZ || 
+                     position.z < minZ;
+        nearest = new Vector3
+        (
+            Mathf.Clamp(position.x, minX, maxX),
+            Mathf.Max(position.y, minY),
+            Mathf.Clamp(position.z, minZ, maxZ)
+        );
+        return result;
     }
 }
