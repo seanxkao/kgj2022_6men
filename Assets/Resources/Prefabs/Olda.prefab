@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 3924145516195498868}
   - component: {fileID: 3924145516195498871}
   - component: {fileID: 3924145516195498870}
-  - component: {fileID: 1533226600334101906}
+  - component: {fileID: 8836324858153066648}
   m_Layer: 10
   m_Name: Olda
   m_TagString: Untagged
@@ -301,7 +301,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 10, z: 1}
   m_Center: {x: 0, y: 4.5, z: 0}
---- !u!114 &1533226600334101906
+--- !u!114 &8836324858153066648
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -310,7 +310,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3924145516195498872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02d05eece58765945957bd1efcf7bfa5, type: 3}
+  m_Script: {fileID: 11500000, guid: d9f53589fd7e11e40af4ecee1896fbcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   <id>k__BackingField: Olda
@@ -318,4 +318,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   canInteract: 0
+  _shouldGoToNextScene: 1
+  _nextSceneName: Level2
   _dialogSystem: {fileID: 0}
