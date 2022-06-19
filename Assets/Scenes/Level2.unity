@@ -1304,7 +1304,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _dialogSystem
       value: 
-      objectReference: {fileID: 2055767121}
+      objectReference: {fileID: 4437341219550689928}
     - target: {fileID: 5560340316351025180, guid: 44f44fce5c8179644a20fd11fbfde815,
         type: 3}
       propertyPath: m_RootOrder
@@ -3470,6 +3470,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebe8da2ee64429b4abf927ef357648e0, type: 3}
+--- !u!114 &4437341219550689928 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3637445231335247405, guid: ebe8da2ee64429b4abf927ef357648e0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4437341219550689927}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58e23ec633910da4c9fef11113ddbee0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5041123344428717572
 GameObject:
   m_ObjectHideFlags: 0
