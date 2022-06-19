@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Game : MonoBehaviour
 {
@@ -11,6 +12,15 @@ public class Game : MonoBehaviour
     public GameObject levelParent { get; private set; }
     private Camera cam = null;
     private List<GridBehaviour> grids = new List<GridBehaviour>();
+
+    [SerializeField]
+    private Text universeText;
+    [SerializeField]
+    private Gradient textGradient;
+    [SerializeField]
+    private float textColorLoopTime;
+    private float textTimer;
+
 
     public float minX { get; private set; } = float.MaxValue;
     public float maxX { get; private set; } = float.MinValue;
@@ -56,19 +66,22 @@ public class Game : MonoBehaviour
 
     private void Update() 
     {
-        if(Input.GetKeyDown(KeyCode.Alpha1))
+        universeText.color = textGradient.Evaluate((textTimer / textColorLoopTime));
+        textTimer = (textTimer + Time.deltaTime) % textColorLoopTime;
+
+        if(Input.GetKeyDown(KeyCode.Alpha1) && projectionAxis != ProjectionAxis.X)
         {
             projectionAxis = ProjectionAxis.X;
             ShowProjection();
             AxisChange.Invoke(projectionAxis);
         }
-        if(Input.GetKeyDown(KeyCode.Alpha2))
+        if(Input.GetKeyDown(KeyCode.Alpha2) && projectionAxis != ProjectionAxis.Y)
         {
             projectionAxis = ProjectionAxis.Y;
             ShowProjection();
             AxisChange.Invoke(projectionAxis);
         }
-        if(Input.GetKeyDown(KeyCode.Alpha3)) 
+        if(Input.GetKeyDown(KeyCode.Alpha3) && projectionAxis != ProjectionAxis.Z) 
         {
             projectionAxis = ProjectionAxis.Z;
             ShowProjection();
@@ -124,6 +137,7 @@ public class Game : MonoBehaviour
         if(cam == null)
             cam = Camera.main;
         
+        string text = "";
         cam.transform.position = levelParent.transform.position;
 
         switch(projectionAxis)
@@ -131,16 +145,21 @@ public class Game : MonoBehaviour
             case ProjectionAxis.X:
                 cam.transform.position += Vector3.right * 100;
                 cam.transform.rotation = Quaternion.Euler(0,270,0);
+                text = "A";
                 break;
             case ProjectionAxis.Y:
                 cam.transform.position += Vector3.up * 100;
                 cam.transform.rotation = Quaternion.Euler(90,0,180);
+                text = "B";
                 break;
             case ProjectionAxis.Z:
                 cam.transform.position += Vector3.forward * 100;
                 cam.transform.rotation = Quaternion.Euler(0,180,0);
+                text = "C";
                 break;
         }
+
+        universeText.text = "宇宙 " + text;
     }
 
     public bool InvalidPosition(Vector3 position, out Vector3 nearest)

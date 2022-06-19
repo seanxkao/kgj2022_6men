@@ -58,13 +58,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5019608, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 92476b2850763482c952440793a5eb24, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 267390690781339704}
   - component: {fileID: 4870182717410622742}
   - component: {fileID: 7109780879398878471}
-  - component: {fileID: 1360950579119613712}
+  - component: {fileID: 8730163803237135672}
   m_Layer: 10
   m_Name: Padko
   m_TagString: Untagged
@@ -105,7 +105,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4156342220080403264}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5, y: 1, z: 2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -202,7 +202,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 10, z: 1}
   m_Center: {x: 0, y: 4.5, z: 0}
---- !u!114 &1360950579119613712
+--- !u!114 &8730163803237135672
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,14 +211,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 4156342220080403264}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 798f70b9f8788254fbaef394db16b9c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e956894ee6115f4fb39864e0d75dfe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <id>k__BackingField: Haiz
+  <id>k__BackingField: Padko
   detectLayer:
     serializedVersion: 2
     m_Bits: 256
   canInteract: 0
+  nextSceneString: SampleScene
 --- !u!1 &7744135718773271818
 GameObject:
   m_ObjectHideFlags: 0

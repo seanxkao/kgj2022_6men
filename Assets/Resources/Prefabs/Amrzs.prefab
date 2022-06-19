@@ -31,7 +31,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3827309930694552621}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -145,8 +145,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   canInteract: 0
-  playerWarpPosition: {x: 5, y: 1, z: 0}
-  selfWarpPosition: {x: 0, y: 1, z: 5}
+  playerWarpPosition: {x: 1, y: 1, z: 2}
+  selfWarpPosition: {x: 5, y: 1, z: 4}
 --- !u!1 &3827309930960190235
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,13 +304,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 0.5019608, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 6494ed7b6b4ee4ca6b11919019da16e3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
