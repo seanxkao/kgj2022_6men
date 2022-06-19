@@ -9,5 +9,8 @@ using UnityEngine.Timeline;
 [TrackBindingType(typeof(Image))]
 public class ImageLayerTrack : TrackAsset
 {
-
+    public override Playable CreateTrackMixer(PlayableGraph graph, GameObject go, int inputCount)
+    {
+        return ScriptPlayable<ImageLayerMixerBehaviour>.Create(graph, inputCount);
+    }
 }

@@ -7,5 +7,6 @@ public class DialogEvent : Marker, INotification
     public PropertyName id 
         => string.Empty;
 
+    public string Name;
     public string Text;
 }
