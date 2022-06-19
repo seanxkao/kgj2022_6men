@@ -169,6 +169,7 @@ MonoBehaviour:
     m_NumColorKeys: 4
     m_NumAlphaKeys: 2
   textColorLoopTime: 1
+  _canvas: {fileID: 7768465766488258551}
 --- !u!1 &6742541186674047387
 GameObject:
   m_ObjectHideFlags: 0

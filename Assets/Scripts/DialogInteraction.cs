@@ -21,8 +21,11 @@ public class DialogInteraction : Interactable
 
     IEnumerator Play()
     {
-        yield return _dialogSystem.Play();
-        if(_shouldGoToNextScene)
+        if(_dialogSystem != null)
+        {
+            yield return _dialogSystem.Play();
+        }
+        if (_shouldGoToNextScene)
         {
             SceneManager.LoadSceneAsync(_nextSceneName, LoadSceneMode.Single);
         }

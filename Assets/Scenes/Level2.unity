@@ -780,20 +780,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 538256476, guid: 7b1f23802d8b8964881c848756d9704f, type: 3}
+      propertyPath: dialogSystem
+      value: 
+      objectReference: {fileID: 2055767121}
     - target: {fileID: 4632304486360677529, guid: 7b1f23802d8b8964881c848756d9704f,
         type: 3}
       propertyPath: m_Name
       value: Obear
-      objectReference: {fileID: 0}
-    - target: {fileID: 4636366864920341215, guid: 7b1f23802d8b8964881c848756d9704f,
-        type: 3}
-      propertyPath: _dialogSystem
-      value: 
-      objectReference: {fileID: 2055767121}
-    - target: {fileID: 4636366864920341215, guid: 7b1f23802d8b8964881c848756d9704f,
-        type: 3}
-      propertyPath: <id>k__BackingField
-      value: obear
       objectReference: {fileID: 0}
     - target: {fileID: 5783859300083632077, guid: 7b1f23802d8b8964881c848756d9704f,
         type: 3}
@@ -1302,16 +1296,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1887971209139387541, guid: 44f44fce5c8179644a20fd11fbfde815,
+    - target: {fileID: 4105384629489565024, guid: 44f44fce5c8179644a20fd11fbfde815,
         type: 3}
-      propertyPath: _dialogSystem
+      propertyPath: dialogSystem
       value: 
       objectReference: {fileID: 4437341219550689928}
-    - target: {fileID: 1887971209139387541, guid: 44f44fce5c8179644a20fd11fbfde815,
-        type: 3}
-      propertyPath: <id>k__BackingField
-      value: haiz
-      objectReference: {fileID: 0}
     - target: {fileID: 5560340316351025180, guid: 44f44fce5c8179644a20fd11fbfde815,
         type: 3}
       propertyPath: m_RootOrder
@@ -3109,6 +3098,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: 15VSObearCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5552104065036273834, guid: 677edbb6730ba4d49ad33341e519ca56,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 5552104065036273834, guid: 677edbb6730ba4d49ad33341e519ca56,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5552104065036273834, guid: 677edbb6730ba4d49ad33341e519ca56,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5552104065036273834, guid: 677edbb6730ba4d49ad33341e519ca56,
+        type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5552104065036273835, guid: 677edbb6730ba4d49ad33341e519ca56,
         type: 3}
       propertyPath: m_Pivot.x
@@ -3348,6 +3357,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ReferenceResolution.y
       value: 1080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371883382036000748, guid: ebe8da2ee64429b4abf927ef357648e0,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 963194227}
+    - target: {fileID: 5371883382036000748, guid: ebe8da2ee64429b4abf927ef357648e0,
+        type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371883382036000748, guid: ebe8da2ee64429b4abf927ef357648e0,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: 20000
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371883382036000748, guid: ebe8da2ee64429b4abf927ef357648e0,
+        type: 3}
+      propertyPath: m_PlaneDistance
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5371883382036000749, guid: ebe8da2ee64429b4abf927ef357648e0,
         type: 3}

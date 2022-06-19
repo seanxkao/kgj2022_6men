@@ -20,6 +20,9 @@ public class Game : MonoBehaviour
     private Gradient textGradient;
     [SerializeField]
     private float textColorLoopTime;
+    [SerializeField]
+    private Canvas _canvas;
+
     private float textTimer;
 
 
@@ -67,6 +70,11 @@ public class Game : MonoBehaviour
 
     private void Update() 
     {
+        if(_canvas.worldCamera == null)
+        {
+            _canvas.worldCamera = Camera.main;
+        }
+
         universeText.color = textGradient.Evaluate((textTimer / textColorLoopTime));
         textTimer = (textTimer + Time.deltaTime) % textColorLoopTime;
 

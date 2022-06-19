@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 5560340316351025191}
   - component: {fileID: 5560340316351025190}
   - component: {fileID: 5560340316351025189}
-  - component: {fileID: 1887971209139387541}
+  - component: {fileID: 4105384629489565024}
   m_Layer: 10
   m_Name: Haiz
   m_TagString: Untagged
@@ -202,7 +202,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 10, z: 1}
   m_Center: {x: 0, y: 4.5, z: 0}
---- !u!114 &1887971209139387541
+--- !u!114 &4105384629489565024
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,18 +211,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 5560340316351025195}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9f53589fd7e11e40af4ecee1896fbcf, type: 3}
+  m_Script: {fileID: 11500000, guid: 52c13e2337cd1c445b8b03fd4aaa7989, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <id>k__BackingField: Haiz
+  <id>k__BackingField: haiz
   detectLayer:
     serializedVersion: 2
     m_Bits: 256
   canInteract: 0
+  dialogSystem: {fileID: 0}
   _shouldGoToNextScene: 0
   _nextSceneName: 
-  _dialogSystem: {fileID: 0}
   destroyAfterDialogComplete: 1
+  fuckCount: 0
 --- !u!1 &5560340316616989650
 GameObject:
   m_ObjectHideFlags: 0

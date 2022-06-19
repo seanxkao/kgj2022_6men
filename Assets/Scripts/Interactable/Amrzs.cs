@@ -14,18 +14,19 @@ public class Amrzs : Interactable
     [SerializeField]
     private Vector3Int selfWarpPosition;
 
-    protected override void Interaction(Player player)
+    protected override IEnumerator InteractionCoroutine(Player player)
     {
-        Debug.Log("Amrzs");
+        return base.InteractionCoroutine(player);
+    }
 
+    protected override IEnumerator _PlayDialog(Player player)
+    {
         switch(interactCount)
         {
             case 0:
-                StartCoroutine(_Play1(player));
-                break;
+                return _Play1(player);
             default:
-                StartCoroutine(_Play2(player));
-                break;
+                return _Play2(player);
         }
     }
 
@@ -40,7 +41,5 @@ public class Amrzs : Interactable
     IEnumerator _Play2(Player player)
     {
         yield return _dialog2.Play();
-
-        Destroy(gameObject);
     }
 }

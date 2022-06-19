@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Interactable : MonoBehaviour
 {
@@ -11,7 +12,15 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     private bool canInteract = false;
     [SerializeField]
-    private DialogSystem _dialogSystem;
+    private DialogSystem dialogSystem;
+
+    [SerializeField]
+    private bool _shouldGoToNextScene;
+    [SerializeField]
+    private string _nextSceneName;
+    [SerializeField]
+    private bool destroyAfterDialogComplete = false;
+
     [SerializeField]
     public int fuckCount;
 
@@ -22,21 +31,34 @@ public class Interactable : MonoBehaviour
         StartCoroutine(InteractionCoroutine(player));
     }
 
-    private IEnumerator InteractionCoroutine(Player player)
+    protected virtual IEnumerator _PlayDialog(Player player)
     {
-        if (_dialogSystem != null)
+        if (dialogSystem != null)
         {
-            yield return _dialogSystem.Play();
+            yield return dialogSystem.Play();
         }
+    }
+
+    protected virtual IEnumerator InteractionCoroutine(Player player)
+    {
+        yield return _PlayDialog(player);
 
         Interaction(player);
-        Debug.Log("Interact");
         if(interactCount >= fuckCount)
         {
             ChildrenCollection.childrens.Add(id);
         }
+        interactCount++;
 
-        interactCount++; 
+        if (_shouldGoToNextScene)
+        {
+            SceneManager.LoadSceneAsync(_nextSceneName, LoadSceneMode.Single);
+        }
+
+        if (destroyAfterDialogComplete)
+        {
+            Destroy(gameObject);
+        }
     }
 
     protected virtual void Interaction(Player player) {}
