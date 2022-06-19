@@ -3074,6 +3074,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5552104065036273829, guid: 677edbb6730ba4d49ad33341e519ca56,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5552104065036273829, guid: 677edbb6730ba4d49ad33341e519ca56,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5552104065036273829, guid: 677edbb6730ba4d49ad33341e519ca56,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5552104065036273829, guid: 677edbb6730ba4d49ad33341e519ca56,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 5552104065036273831, guid: 677edbb6730ba4d49ad33341e519ca56,
         type: 3}
       propertyPath: m_Name
@@ -3298,6 +3318,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 15VSHaizCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371883382036000739, guid: ebe8da2ee64429b4abf927ef357648e0,
+        type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371883382036000739, guid: ebe8da2ee64429b4abf927ef357648e0,
+        type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371883382036000739, guid: ebe8da2ee64429b4abf927ef357648e0,
+        type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 5371883382036000739, guid: ebe8da2ee64429b4abf927ef357648e0,
+        type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 5371883382036000749, guid: ebe8da2ee64429b4abf927ef357648e0,
         type: 3}
