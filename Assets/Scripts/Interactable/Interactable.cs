@@ -48,17 +48,18 @@ public class Interactable : MonoBehaviour
         {
             ChildrenCollection.childrens.Add(id);
         }
-        interactCount++;
 
         if (_shouldGoToNextScene)
         {
             SceneManager.LoadSceneAsync(_nextSceneName, LoadSceneMode.Single);
         }
 
-        if (destroyAfterDialogComplete)
+        if (interactCount >= fuckCount && destroyAfterDialogComplete)
         {
             Destroy(gameObject);
         }
+
+        interactCount++;
     }
 
     protected virtual void Interaction(Player player) {}

@@ -103,8 +103,10 @@ public class DialogSystem : MonoBehaviour
 
     private IEnumerator _PlayDialog(string text)
     {
+        _textView.text = string.Empty;
         yield return _PlayText(text);
         _textView.text = text;
+        yield return null;
         interactable = true;
     }
 
