@@ -14,10 +14,6 @@ public class DialogSystem : MonoBehaviour
     private Timeline[] _timelines;
     [SerializeField]
     private Button _playButton;
-    [SerializeField]
-    private CanvasGroup _overPanel;
-    [SerializeField]
-    private Button _over;
 
     [SerializeField]
     private Text _nameView;
@@ -26,6 +22,10 @@ public class DialogSystem : MonoBehaviour
 
     [SerializeField]
     private float _playSpeed;
+
+
+    bool interactable = false;
+    event Action OnClick;
     
     private void Awake()
     {
@@ -35,7 +35,14 @@ public class DialogSystem : MonoBehaviour
             {
                 StartCoroutine(Play(_timelines));
             });
+        }
+    }
 
+    private void Update()
+    {
+        if(interactable && Input.GetKeyDown(KeyCode.Space))
+        {
+            OnClick?.Invoke();
         }
     }
 
@@ -62,18 +69,17 @@ public class DialogSystem : MonoBehaviour
             StartCoroutine(_PlayDialog(dialog.Text));
         };
 
-        UnityAction onClick = new UnityAction(() =>
+        Action onClick = () =>
         {
-            _overPanel.blocksRaycasts = false;
-            _overPanel.interactable = false;
+            interactable = false;
             timeline.Playable.playableGraph.GetRootPlayable(0).SetSpeed(1f);
-        });
+        };
 
         Action<PlayableDirector> onFinished = _ => isFinished = true;
 
         timeline.Playable.stopped += onFinished;
         timeline.OnDialog += onDialog;
-        _over.onClick.AddListener(onClick);
+        OnClick += onClick;
 
         timeline.Playable.Play();
         while (!isFinished)
@@ -83,15 +89,14 @@ public class DialogSystem : MonoBehaviour
 
         timeline.Playable.stopped -= onFinished;
         timeline.OnDialog -= onDialog;
-        _over.onClick.RemoveListener(onClick);
+        OnClick -= onClick;
     }
 
     private IEnumerator _PlayDialog(string text)
     {
         yield return _PlayText(text);
         _textView.text = text;
-        _overPanel.blocksRaycasts = true;
-        _overPanel.interactable = true;
+        interactable = true;
     }
 
     private IEnumerator _PlayText(string text)
