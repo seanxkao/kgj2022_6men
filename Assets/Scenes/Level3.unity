@@ -1054,6 +1054,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lutra
       objectReference: {fileID: 0}
+    - target: {fileID: 4326250372001926748, guid: 3cf38a7070934944caa0b4a067ba4f61,
+        type: 3}
+      propertyPath: <id>k__BackingField
+      value: lutra
+      objectReference: {fileID: 0}
     - target: {fileID: 4326250372001926749, guid: 3cf38a7070934944caa0b4a067ba4f61,
         type: 3}
       propertyPath: m_Size.y
@@ -1601,6 +1606,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8730163803237135672, guid: 7bd63859431dfd744a6b1bc2d81145c5,
+        type: 3}
+      propertyPath: <id>k__BackingField
+      value: padko
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bd63859431dfd744a6b1bc2d81145c5, type: 3}
@@ -3141,6 +3151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: selfWarpPosition.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3827309930694552619, guid: 9ba7055a3c7c7f248963810477c16298,
+        type: 3}
+      propertyPath: <id>k__BackingField
+      value: amrzs
       objectReference: {fileID: 0}
     - target: {fileID: 3827309930694552619, guid: 9ba7055a3c7c7f248963810477c16298,
         type: 3}
