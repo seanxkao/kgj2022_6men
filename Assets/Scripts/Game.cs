@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Game : MonoBehaviour
 {
     public static Game instance = null;
 
-    private GameObject levelParent;
+    public GameObject levelParent { get; private set; }
     private Camera cam = null;
     private List<GridBehaviour> grids = new List<GridBehaviour>();
 
@@ -34,6 +34,22 @@ public class Game : MonoBehaviour
             Destroy(this);
             return;
         }
+        FindAllGrids();
+        ShowProjection();
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable() 
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
         FindAllGrids();
         ShowProjection();
     }
@@ -83,6 +99,23 @@ public class Game : MonoBehaviour
         levelParent = new GameObject();
         levelParent.transform.position = new Vector3(minX + maxX, minX + maxY, minZ + maxZ) / 2f;
         foreach(var grid in grids)
+            grid.transform.SetParent(levelParent.transform);
+    }
+
+    public void UpdateLevel(List<GridBehaviour> newGrids)
+    {
+        foreach(var grid in newGrids)
+        {
+            minX = Mathf.Min(minX, grid.transform.position.x);
+            maxX = Mathf.Max(maxX, grid.transform.position.x);
+            minY = Mathf.Min(minY, grid.transform.position.y);
+            maxY = Mathf.Max(maxY, grid.transform.position.y);
+            minZ = Mathf.Min(minZ, grid.transform.position.z);
+            maxZ = Mathf.Max(maxZ, grid.transform.position.z);
+            grids.Add(grid);
+        }
+        levelParent.transform.position = new Vector3(minX + maxX, minX + maxY, minZ + maxZ) / 2f;
+        foreach(var grid in newGrids)
             grid.transform.SetParent(levelParent.transform);
     }
 

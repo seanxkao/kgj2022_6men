@@ -10,6 +10,7 @@ public class Interactable : MonoBehaviour
     private LayerMask detectLayer;
     [SerializeField]
     private bool canInteract = false;
+
     public int interactCount { get; protected set; } = 0;
 
     private void StartInteract(Player player) 

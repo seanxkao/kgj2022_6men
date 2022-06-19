@@ -140,10 +140,13 @@ public class Player : MonoBehaviour
         if(Input.GetKey(KeyCode.D))
             direction += xVector;
 
-        var canMove = PredictMoveRaycast(transform.position, direction);
+        /*var canMove = true;
+        
+        if(direction.magnitude > 0)
+            canMove = PredictMoveRaycast(transform.position, direction);
         
         if(!canMove)
-            direction = Vector3.zero;
+            direction = Vector3.zero;*/
 
         if(direction.sqrMagnitude > 0)
             direction = direction.normalized;
@@ -163,10 +166,13 @@ public class Player : MonoBehaviour
         if(Input.GetKey(KeyCode.D))
             direction += xVector;
         
-        var canMove = PredictMoveRaycast(transform.position, direction);
+        /*var canMove = true;
+        
+        if(direction.magnitude > 0)
+            canMove = PredictMoveRaycast(transform.position, direction);
         
         if(!canMove)
-            direction = Vector3.zero;
+            direction = Vector3.zero;*/
 
         if(direction.sqrMagnitude > 0)
             direction = direction.normalized;
@@ -184,10 +190,13 @@ public class Player : MonoBehaviour
         bool e = Physics.Raycast(checkPosition, Vector3.down, moveCheckDepth, groundLayers, QueryTriggerInteraction.Ignore);
 
         if(Vector3.Dot(moveDirection, yVector) != 0 && ((!a && b) || (a && !b)))
+        {
             return false;
+        }
         if(Vector3.Dot(moveDirection, xVector) != 0 && ((!c && d) || (c && !d)))
-            return false;
-        
+        {
+            return false;        
+        }
         if(!a && !b && !c && !d && !e)
             return false;
         
