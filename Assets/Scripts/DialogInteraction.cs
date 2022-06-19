@@ -11,6 +11,8 @@ public class DialogInteraction : Interactable
     private string _nextSceneName;
     [SerializeField]
     private DialogSystem _dialogSystem;
+    [SerializeField]
+    private bool destroyAfterDialogComplete = false;
 
     protected override void Interaction(Player player)
     {
@@ -24,5 +26,7 @@ public class DialogInteraction : Interactable
         {
             SceneManager.LoadSceneAsync(_nextSceneName, LoadSceneMode.Single);
         }
+        if(destroyAfterDialogComplete)
+            Destroy(gameObject);
     }
 }
