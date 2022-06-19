@@ -29,12 +29,14 @@ public class DialogSystem : MonoBehaviour
     
     private void Awake()
     {
-        /*
-        _playButton.onClick.AddListener(() => 
+        if(_playButton != null)
         {
-            StartCoroutine(Play(_timelines));
-        });
-        */
+            _playButton.onClick.AddListener(() =>
+            {
+                StartCoroutine(Play(_timelines));
+            });
+
+        }
     }
 
     public IEnumerator Play()
