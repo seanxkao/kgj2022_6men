@@ -11,6 +11,9 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     private bool canInteract = false;
 
+    [SerializeField]
+    public int fuckCount;
+
     public int interactCount { get; protected set; } = 0;
 
     private void StartInteract(Player player) 
@@ -25,6 +28,11 @@ public class Interactable : MonoBehaviour
 
         Interaction(player);
         Debug.Log("Interact");
+        if(interactCount >= fuckCount)
+        {
+            ChildrenCollection.childrens.Add(id);
+        }
+
         interactCount++; 
     }
 

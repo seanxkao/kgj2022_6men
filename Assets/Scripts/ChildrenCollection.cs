@@ -11,6 +11,8 @@ public class ChildrenCollection : MonoBehaviour
     public static bool obear;
     public static bool olda;
 
+    public static HashSet<string> childrens = new HashSet<string>();
+
     public Image olda_image;
     public Image obear_image;
     public Image lutra_image;
@@ -31,6 +33,27 @@ public class ChildrenCollection : MonoBehaviour
 
     public void SetSprites()
     {
+        olda_image.sprite = childrens.Contains("olda")
+            ? olda_sprite
+            : olda_sprite_dark;
+
+        obear_image.sprite = childrens.Contains("obear")
+            ? obear_sprite
+            : obear_sprite_dark;
+
+        lutra_image.sprite = childrens.Contains("lutra")
+            ? lutra_sprite
+            : lutra_sprite_dark;
+
+        amrzs_image.sprite = childrens.Contains("amrzs")
+            ? amrzs_sprite
+            : amrzs_sprite_dark;
+
+        haiz_image.sprite = childrens.Contains("haiz")
+            ? haiz_sprite
+            : haiz_sprite_dark;
+
+        return;
         olda_image.sprite = olda ? olda_sprite : olda_sprite_dark;
         obear_image.sprite = obear ? obear_sprite : obear_sprite_dark;
         lutra_image.sprite = lutra ? lutra_sprite : lutra_sprite_dark;

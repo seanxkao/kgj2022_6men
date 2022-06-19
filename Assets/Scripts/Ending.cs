@@ -19,12 +19,12 @@ public class Ending : MonoBehaviour
 
     IEnumerator _Play()
     {
-        yield return dialogSystem.Play();
-
         childrenCollectionGO.SetActive(true);
         childrenCollection.SetSprites();
+        yield return dialogSystem.Play();
 
-        yield return new WaitUntil(()=>Input.anyKeyDown);
+
+        yield return new WaitUntil(() => Input.anyKeyDown);
 
         SceneManager.LoadScene("Title");
     }
