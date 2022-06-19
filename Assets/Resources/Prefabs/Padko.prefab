@@ -219,7 +219,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   canInteract: 0
-  nextSceneString: SampleScene
+  nextSceneString: Ending
 --- !u!1 &7744135718773271818
 GameObject:
   m_ObjectHideFlags: 0
