@@ -12,6 +12,7 @@ public class Game : MonoBehaviour
     public GameObject levelParent { get; private set; }
     private Camera cam = null;
     private List<GridBehaviour> grids = new List<GridBehaviour>();
+    private Dictionary<Vector3Int, GridBehaviour> dictionary = new Dictionary<Vector3Int, GridBehaviour>();
 
     [SerializeField]
     private Text universeText;
@@ -91,6 +92,9 @@ public class Game : MonoBehaviour
 
     private void FindAllGrids()
     {
+        grids.Clear();
+        dictionary.Clear();
+
         grids = FindObjectsOfType<GridBehaviour>().ToList();
 
         minX = float.MaxValue;
@@ -107,28 +111,19 @@ public class Game : MonoBehaviour
             maxY = Mathf.Max(maxY, grid.transform.position.y);
             minZ = Mathf.Min(minZ, grid.transform.position.z);
             maxZ = Mathf.Max(maxZ, grid.transform.position.z);
+
+            Vector3Int intVect = new Vector3Int
+                                    (
+                                        (int)grid.transform.position.x,
+                                        (int)grid.transform.position.y,
+                                        (int)grid.transform.position.z
+                                    );
+            dictionary.Add(intVect, grid);
         }
 
         levelParent = new GameObject();
         levelParent.transform.position = new Vector3(minX + maxX, minX + maxY, minZ + maxZ) / 2f;
         foreach(var grid in grids)
-            grid.transform.SetParent(levelParent.transform);
-    }
-
-    public void UpdateLevel(List<GridBehaviour> newGrids)
-    {
-        foreach(var grid in newGrids)
-        {
-            minX = Mathf.Min(minX, grid.transform.position.x);
-            maxX = Mathf.Max(maxX, grid.transform.position.x);
-            minY = Mathf.Min(minY, grid.transform.position.y);
-            maxY = Mathf.Max(maxY, grid.transform.position.y);
-            minZ = Mathf.Min(minZ, grid.transform.position.z);
-            maxZ = Mathf.Max(maxZ, grid.transform.position.z);
-            grids.Add(grid);
-        }
-        levelParent.transform.position = new Vector3(minX + maxX, minX + maxY, minZ + maxZ) / 2f;
-        foreach(var grid in newGrids)
             grid.transform.SetParent(levelParent.transform);
     }
 
@@ -160,6 +155,29 @@ public class Game : MonoBehaviour
         }
 
         universeText.text = "宇宙 " + text;
+    }
+
+    public bool ShowNoEntrySign(Vector3 playerPosition, Vector3 playerVelocity)
+    {
+        Vector3 rawScanPosition = playerPosition + playerVelocity + Vector3.down;
+        Vector3Int scanPosition = new Vector3Int
+                                (
+                                    Mathf.RoundToInt(rawScanPosition.x),
+                                    Mathf.RoundToInt(rawScanPosition.y),
+                                    Mathf.RoundToInt(rawScanPosition.z)
+                                );
+        
+        if(
+            !dictionary.ContainsKey(scanPosition) && 
+            !dictionary.ContainsKey(scanPosition + Vector3Int.up) && 
+            !dictionary.ContainsKey(scanPosition - Vector3Int.up) && 
+            !dictionary.ContainsKey(scanPosition - Vector3Int.up * 2) && 
+            !dictionary.ContainsKey(scanPosition - Vector3Int.up * 3) &&
+            !dictionary.ContainsKey(scanPosition - Vector3Int.up * 4) 
+          )
+            return true;
+        else
+            return false;
     }
 
     public bool InvalidPosition(Vector3 position, out Vector3 nearest)

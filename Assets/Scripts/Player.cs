@@ -17,6 +17,16 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float gravity;
 
+    [Header("No Entry Sign")]
+    [SerializeField]
+    private NoEntrySign xSign;
+    [SerializeField]
+    private NoEntrySign nxSign;
+    [SerializeField]
+    private NoEntrySign ySign;
+    [SerializeField]
+    private NoEntrySign nySign;
+
     private Vector3 jumpHorizontalVelocity;
 
     [Header("Player Grounded")]
@@ -103,6 +113,26 @@ public class Player : MonoBehaviour
         else
             velocity = MoveWithJump();
         
+        var xVelocity = Vector3.Project(velocity, xVector);
+        var yVelocity = Vector3.Project(velocity ,yVector);
+        if(velocity != Vector3.zero)
+        {
+            if(game.ShowNoEntrySign(transform.position, xVelocity / speed))
+            {
+                if(Vector3.Dot(velocity,xVector) > 0)
+                    xSign.Show();
+                if(Vector3.Dot(velocity,xVector) < 0)
+                    nxSign.Show();
+            }
+            if(game.ShowNoEntrySign(transform.position, yVelocity / speed))
+            {
+                if(Vector3.Dot(velocity,yVector) > 0)
+                    ySign.Show();
+                if(Vector3.Dot(velocity,yVector) < 0)
+                    nySign.Show();
+            }
+        }
+        
         velocity += jumpHorizontalVelocity;
         jumpHorizontalVelocity += Vector3.down * gravity * Time.fixedDeltaTime;
 
@@ -146,14 +176,6 @@ public class Player : MonoBehaviour
         if(Input.GetKey(KeyCode.D))
             direction += xVector;
 
-        /*var canMove = true;
-        
-        if(direction.magnitude > 0)
-            canMove = PredictMoveRaycast(transform.position, direction);
-        
-        if(!canMove)
-            direction = Vector3.zero;*/
-
         if(direction.sqrMagnitude > 0)
             direction = direction.normalized;
         
@@ -171,41 +193,10 @@ public class Player : MonoBehaviour
             direction -= yVector;
         if(Input.GetKey(KeyCode.D))
             direction += xVector;
-        
-        /*var canMove = true;
-        
-        if(direction.magnitude > 0)
-            canMove = PredictMoveRaycast(transform.position, direction);
-        
-        if(!canMove)
-            direction = Vector3.zero;*/
 
         if(direction.sqrMagnitude > 0)
             direction = direction.normalized;
         
         return direction * speed;
-    }
-
-    private bool PredictMoveRaycast(Vector3 position, Vector3 moveDirection)
-    {
-        Vector3 checkPosition = transform.position + moveDirection * moveCheckOffset;
-        bool a = Physics.Raycast(checkPosition + xVector * moveCheckRadius, Vector3.down, moveCheckDepth, groundLayers, QueryTriggerInteraction.Ignore);
-        bool b = Physics.Raycast(checkPosition - xVector * moveCheckRadius, Vector3.down, moveCheckDepth, groundLayers, QueryTriggerInteraction.Ignore);
-        bool c = Physics.Raycast(checkPosition + yVector * moveCheckRadius, Vector3.down, moveCheckDepth, groundLayers, QueryTriggerInteraction.Ignore);
-        bool d = Physics.Raycast(checkPosition - yVector * moveCheckRadius, Vector3.down, moveCheckDepth, groundLayers, QueryTriggerInteraction.Ignore);
-        bool e = Physics.Raycast(checkPosition, Vector3.down, moveCheckDepth, groundLayers, QueryTriggerInteraction.Ignore);
-
-        if(Vector3.Dot(moveDirection, yVector) != 0 && ((!a && b) || (a && !b)))
-        {
-            return false;
-        }
-        if(Vector3.Dot(moveDirection, xVector) != 0 && ((!c && d) || (c && !d)))
-        {
-            return false;        
-        }
-        if(!a && !b && !c && !d && !e)
-            return false;
-        
-        return true;
     }
 }
