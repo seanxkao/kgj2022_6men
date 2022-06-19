@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Player : MonoBehaviour
 {
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool grounded = true;
 
+    public GameEvent<Player> Interact { get; private set; } = new GameEvent<Player>();
 
     private void Awake() 
     {
@@ -81,6 +83,8 @@ public class Player : MonoBehaviour
 
     private void Update() 
     {
+        if(Input.GetKeyDown(KeyCode.Space) && grounded)
+            Interact.Invoke(this);
         if(game.projectionAxis != ProjectionAxis.Y && grounded && Input.GetKeyDown(KeyCode.W))
             jumpHorizontalVelocity = Vector3.up * Mathf.Sqrt(2 * gravity * jumpHeight); // v = (2gh)^0.5
     }

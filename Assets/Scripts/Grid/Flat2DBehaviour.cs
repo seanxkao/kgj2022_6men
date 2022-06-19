@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GridBehaviour : MonoBehaviour
+public class Flat2DBehaviour : MonoBehaviour
 {
-    public Collider c2d { get; protected set; }
     public Image image { get; protected set; }
 
     private void Awake() 
     {
-        c2d = GetComponent<Collider>();
         image = GetComponentInChildren<Image>();    
     }
 
