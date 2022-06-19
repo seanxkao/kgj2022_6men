@@ -38,7 +38,7 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: -3076386697947777240}
-    m_Duration: 2.016666666666666
+    m_Duration: 1.9833333333333334
     m_TimeScale: 1
     m_ParentTrack: {fileID: -3903109225297701103}
     m_EaseInDuration: 0
@@ -348,10 +348,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 2.0166666666666666
+    m_Start: 1.9833333333333334
     m_ClipIn: 0
     m_Asset: {fileID: -2623396565095182820}
-    m_Duration: 0.6333333333333333
+    m_Duration: 0.6666666666666665
     m_TimeScale: 1
     m_ParentTrack: {fileID: -382406817159023616}
     m_EaseInDuration: 0
@@ -440,10 +440,10 @@ MonoBehaviour:
   m_Children: []
   m_Clips:
   - m_Version: 1
-    m_Start: 2.033333333333333
+    m_Start: 2.0166666666666666
     m_ClipIn: 0
     m_Asset: {fileID: -2849608969194047820}
-    m_Duration: 0.5833333333333335
+    m_Duration: 0.6000000000000001
     m_TimeScale: 1
     m_ParentTrack: {fileID: -202357845007453633}
     m_EaseInDuration: 0
@@ -476,7 +476,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -618,7 +636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb89b2d65e95214fba4a4ef873959dd, type: 3}
   m_Name: Dialog Event
   m_EditorClassIdentifier: 
-  m_Time: 1.9666666666666666
+  m_Time: 1.9
   Name: "\u6B50\u59B2"
   Text: "\u5FEB.......\u5FEB\u963B\u6B62\u6211\uFF0C\u56E0\u70BA\u5E73\u5E73\u5B50\u964D\u7DAD\u6253\u64CA\u9020\u6210\u7684\u6642\u9593\u932F\u4E82\uFF0C\u6211\u9AD4\u5916\u7684\u602A\u7269\u8D8A\u4F86\u8D8A\u5927\u4E86\u3002"
 --- !u!74 &210205853910892383
@@ -862,25 +880,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -986,7 +986,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb89b2d65e95214fba4a4ef873959dd, type: 3}
   m_Name: Dialog Event
   m_EditorClassIdentifier: 
-  m_Time: 2.0166666666666666
+  m_Time: 2
   Name: "15\u865F"
   Text: "\u6211\u8AAA\u7684\u5C04\u91D1\u7BA1\u7406\u662F\u6307\u5E6B\u59B3\u4E4B\u5F8C\u4F86\u7BA1\u7406\u59B3\u4E4B\u5F8C\u7684\uFF33\uFF23\uFF0C\u59B3\u5728\u60F3\u751A\u9EBC\uFF1F\u597D\u8272\u5594\u3002"
 --- !u!114 &3007198048272917210
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb89b2d65e95214fba4a4ef873959dd, type: 3}
   m_Name: Dialog Event
   m_EditorClassIdentifier: 
-  m_Time: 1.9833333333333334
+  m_Time: 1.9333333333333336
   Name: "15\u865F"
   Text: "\u597D\u554A\uFF0C\u90A3\u6211\u5C31\u8981\u5C04\u91D1\u7BA1\u7406\u59B3\u56C9\uFF0C\u563F\u563F\u563F\u3002"
 --- !u!114 &3122637504705046450
@@ -1029,13 +1029,13 @@ MonoBehaviour:
     m_Start: 0
     m_ClipIn: 0
     m_Asset: {fileID: 8787040644486115939}
-    m_Duration: 2.033333333333333
+    m_Duration: 2.0166666666666666
     m_TimeScale: 1
     m_ParentTrack: {fileID: 3122637504705046450}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
     m_BlendInDuration: -1
-    m_BlendOutDuration: -1
+    m_BlendOutDuration: 0
     m_MixInCurve:
       serializedVersion: 2
       m_Curve:
@@ -1062,25 +1062,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1095,37 +1077,19 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: ImageLayerAsset
   - m_Version: 1
-    m_Start: 2.033333333333333
+    m_Start: 2.016666666666666
     m_ClipIn: 0
     m_Asset: {fileID: -570632339802952825}
-    m_Duration: 0.6166666666666667
+    m_Duration: 0.6333333333333337
     m_TimeScale: 1
     m_ParentTrack: {fileID: 3122637504705046450}
     m_EaseInDuration: 0
     m_EaseOutDuration: 0
-    m_BlendInDuration: -1
+    m_BlendInDuration: 0
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
+      m_Curve: []
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1177,7 +1141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cb89b2d65e95214fba4a4ef873959dd, type: 3}
   m_Name: Dialog Event
   m_EditorClassIdentifier: 
-  m_Time: 2
+  m_Time: 1.9666666666666668
   Name: "\u6B50\u59B2"
   Text: "5......5\u54E5\u4E0D\u8981\u3002"
 --- !u!114 &5004901178667229458
@@ -1464,7 +1428,25 @@ MonoBehaviour:
     m_BlendOutDuration: -1
     m_MixInCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
@@ -1539,7 +1521,25 @@ MonoBehaviour:
       m_RotationOrder: 4
     m_MixOutCurve:
       serializedVersion: 2
-      m_Curve: []
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
