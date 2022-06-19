@@ -25,7 +25,7 @@ public class DialogSystem : MonoBehaviour
     private float _playSpeed;
 
     private Player player = null;
-    Queue<Task> tasks = new Queue<Task>();
+    Queue<Func<Task>> tasks = new Queue<Func<Task>>();
     bool interactable = false;
     event Action OnClick;    
     
@@ -54,7 +54,7 @@ public class DialogSystem : MonoBehaviour
             if(tasks.Count > 0)
             {
                 var task = tasks.Dequeue();
-                await task;
+                await task();
             }
             else
             {
@@ -94,7 +94,7 @@ public class DialogSystem : MonoBehaviour
         Action<DialogEvent> onDialog = dialog =>
         {
             timeline.Playable.playableGraph.GetRootPlayable(0).SetSpeed(0f);
-            tasks.Enqueue(_PlayDialog(dialog.Name, dialog.Text));
+            tasks.Enqueue(() => _PlayDialog(dialog.Name, dialog.Text));
         };
 
         Action onClick = () =>
