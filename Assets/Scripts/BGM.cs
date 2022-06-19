@@ -5,6 +5,7 @@ using UnityEngine;
 public class BGM : MonoBehaviour
 {
     private static BGM instance = null;
+    
     private void Awake() 
     {
         if(instance == null)
@@ -13,6 +14,6 @@ public class BGM : MonoBehaviour
             DontDestroyOnLoad(this);    
         }
         else
-            Destroy(this);
+            Destroy(gameObject);
     }
 }
