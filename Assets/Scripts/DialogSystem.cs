@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,9 +25,9 @@ public class DialogSystem : MonoBehaviour
     private float _playSpeed;
 
     private Player player = null;
-
+    Queue<Task> tasks = new Queue<Task>();
     bool interactable = false;
-    event Action OnClick;
+    event Action OnClick;    
     
     private void Awake()
     {
@@ -39,8 +40,27 @@ public class DialogSystem : MonoBehaviour
         }
     }
 
-    private void Start() {
+    private void Start()
+    {
         player = FindObjectOfType<Player>();
+
+        Fuck();
+    }
+
+    async Task Fuck()
+    {
+        while (true)
+        {
+            if(tasks.Count > 0)
+            {
+                var task = tasks.Dequeue();
+                await task;
+            }
+            else
+            {
+                await Task.Yield();
+            }
+        }
     }
 
     private void Update()
@@ -74,13 +94,14 @@ public class DialogSystem : MonoBehaviour
         Action<DialogEvent> onDialog = dialog =>
         {
             timeline.Playable.playableGraph.GetRootPlayable(0).SetSpeed(0f);
-            _nameView.text = dialog.Name;
-            StartCoroutine(_PlayDialog(dialog.Text));
+            tasks.Enqueue(_PlayDialog(dialog.Name, dialog.Text));
         };
 
         Action onClick = () =>
         {
             interactable = false;
+            _nameView.text = string.Empty;
+            _textView.text = string.Empty;
             timeline.Playable.playableGraph.GetRootPlayable(0).SetSpeed(1f);
         };
 
@@ -101,20 +122,20 @@ public class DialogSystem : MonoBehaviour
         OnClick -= onClick;
     }
 
-    private IEnumerator _PlayDialog(string text)
+    private async Task _PlayDialog(string name, string text)
     {
+        _nameView.text = name;
         _textView.text = string.Empty;
-        yield return _PlayText(text);
+        await _PlayText(text);
         _textView.text = text;
-        yield return null;
         interactable = true;
     }
 
-    private IEnumerator _PlayText(string text)
+    private async Task _PlayText(string text)
     {
         var textPlayer = new TextPlayer(text);
         float length = textPlayer.Length;
-        yield return Interpolation.Play(0f, length, length / _playSpeed, t =>
+        await Interpolation.Play(0f, length, length / _playSpeed, t =>
         {
             _textView.text = textPlayer.GetText(Mathf.FloorToInt(t));
         });
