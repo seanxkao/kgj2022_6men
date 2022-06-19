@@ -35,7 +35,8 @@ public class Lutra : Interactable
                     if(component != this && !(component is Transform))
                         Destroy(component);
                 }
-                StartCoroutine(ScreenShake());
+                player.StartCoroutine(ScreenShake());
+                Destroy(gameObject);
                 break;
             default:
                 break;
@@ -79,6 +80,5 @@ public class Lutra : Interactable
         cam.transform.position = position;
         cam.transform.rotation = Quaternion.Euler(rotation);
 
-        Destroy(gameObject);
     }
 }
