@@ -18,17 +18,28 @@ public class DialogSystem : MonoBehaviour
     private CanvasGroup _overPanel;
     [SerializeField]
     private Button _over;
+
+    [SerializeField]
+    private Text _nameView;
     [SerializeField]
     private Text _textView;
+
     [SerializeField]
     private float _playSpeed;
     
     private void Awake()
     {
+        /*
         _playButton.onClick.AddListener(() => 
         {
             StartCoroutine(Play(_timelines));
         });
+        */
+    }
+
+    public IEnumerator Play()
+    {
+        return Play(_timelines);
     }
 
     public IEnumerator Play(Timeline[] timelines)
@@ -45,6 +56,7 @@ public class DialogSystem : MonoBehaviour
         Action<DialogEvent> onDialog = dialog =>
         {
             timeline.Playable.playableGraph.GetRootPlayable(0).SetSpeed(0f);
+            _nameView.text = dialog.Name;
             StartCoroutine(_PlayDialog(dialog.Text));
         };
 
