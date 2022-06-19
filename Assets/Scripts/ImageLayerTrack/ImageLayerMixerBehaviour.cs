@@ -25,7 +25,10 @@ public class ImageLayerMixerBehaviour : PlayableBehaviour
             var inputPlayable = (ScriptPlayable<ImageLayerBehaviour>)playable.GetInput(i);
             var input = inputPlayable.GetBehaviour();
             color += input._color * inputWeight;
-            sprite = input._sprite;
+            if(inputWeight != 0)
+            {
+                sprite = input._sprite;
+            }
         }
         image.sprite = sprite;
         image.color = color;
