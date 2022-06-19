@@ -23,6 +23,7 @@ public class DialogSystem : MonoBehaviour
     [SerializeField]
     private float _playSpeed;
 
+    private Player player = null;
 
     bool interactable = false;
     event Action OnClick;
@@ -36,6 +37,10 @@ public class DialogSystem : MonoBehaviour
                 StartCoroutine(Play(_timelines));
             });
         }
+    }
+
+    private void Start() {
+        player = FindObjectOfType<Player>();
     }
 
     private void Update()
@@ -53,10 +58,14 @@ public class DialogSystem : MonoBehaviour
 
     public IEnumerator Play(Timeline[] timelines)
     {
+        if(player != null)
+            player.canMove = false;
         foreach(var timeline in timelines)
         {
             yield return _PlayScenario(timeline);
         }
+        if(player != null)
+            player.canMove = true;
     }
 
     private IEnumerator _PlayScenario(Timeline timeline)

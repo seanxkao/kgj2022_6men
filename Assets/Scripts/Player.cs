@@ -35,6 +35,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     private bool grounded = true;
 
+    public bool canMove = true;
+
     public GameEvent<Player> Interact { get; private set; } = new GameEvent<Player>();
 
     private void Awake() 
@@ -83,6 +85,8 @@ public class Player : MonoBehaviour
 
     private void Update() 
     {
+        if(!canMove)
+            return;
         if(Input.GetKeyDown(KeyCode.Space) && grounded)
             Interact.Invoke(this);
         if(game.projectionAxis != ProjectionAxis.Y && grounded && Input.GetKeyDown(KeyCode.W))
@@ -91,6 +95,8 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate() 
     {
+        if(!canMove)
+            return;
         Vector3 velocity;
         if(game.projectionAxis == ProjectionAxis.Y)
             velocity = MoveWithoutJump();
