@@ -10,7 +10,8 @@ public class Interactable : MonoBehaviour
     private LayerMask detectLayer;
     [SerializeField]
     private bool canInteract = false;
-
+    [SerializeField]
+    private DialogSystem _dialogSystem;
     [SerializeField]
     public int fuckCount;
 
@@ -23,8 +24,10 @@ public class Interactable : MonoBehaviour
 
     private IEnumerator InteractionCoroutine(Player player)
     {
-        yield return null;
-        // yield return something...
+        if (_dialogSystem != null)
+        {
+            yield return _dialogSystem.Play();
+        }
 
         Interaction(player);
         Debug.Log("Interact");

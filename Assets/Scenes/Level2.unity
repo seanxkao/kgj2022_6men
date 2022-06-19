@@ -790,6 +790,11 @@ PrefabInstance:
       propertyPath: _dialogSystem
       value: 
       objectReference: {fileID: 2055767121}
+    - target: {fileID: 4636366864920341215, guid: 7b1f23802d8b8964881c848756d9704f,
+        type: 3}
+      propertyPath: <id>k__BackingField
+      value: obear
+      objectReference: {fileID: 0}
     - target: {fileID: 5783859300083632077, guid: 7b1f23802d8b8964881c848756d9704f,
         type: 3}
       propertyPath: m_RootOrder
@@ -1302,6 +1307,11 @@ PrefabInstance:
       propertyPath: _dialogSystem
       value: 
       objectReference: {fileID: 4437341219550689928}
+    - target: {fileID: 1887971209139387541, guid: 44f44fce5c8179644a20fd11fbfde815,
+        type: 3}
+      propertyPath: <id>k__BackingField
+      value: haiz
+      objectReference: {fileID: 0}
     - target: {fileID: 5560340316351025180, guid: 44f44fce5c8179644a20fd11fbfde815,
         type: 3}
       propertyPath: m_RootOrder

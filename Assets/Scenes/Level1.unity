@@ -2281,6 +2281,11 @@ PrefabInstance:
       propertyPath: _dialogSystem
       value: 
       objectReference: {fileID: 8716169879413444089}
+    - target: {fileID: 8836324858153066648, guid: 3f9868ac47f003440a5a797b6c517fb3,
+        type: 3}
+      propertyPath: <id>k__BackingField
+      value: olda
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3924145516195498873, guid: 3f9868ac47f003440a5a797b6c517fb3, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3f9868ac47f003440a5a797b6c517fb3, type: 3}
