@@ -10,6 +10,7 @@ public class ChildrenCollection : MonoBehaviour
     public static bool lutra;
     public static bool obear;
     public static bool olda;
+    public static bool padko;
 
     public static HashSet<string> childrens = new HashSet<string>();
 

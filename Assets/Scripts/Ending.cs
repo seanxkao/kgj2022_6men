@@ -14,6 +14,7 @@ public class Ending : MonoBehaviour
 
     private void Awake()
     {
+        ChildrenCollection.childrens.Add("padko");
         StartCoroutine(_Play());
     }
 

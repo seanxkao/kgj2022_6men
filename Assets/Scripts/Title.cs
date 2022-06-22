@@ -11,11 +11,14 @@ public class Title : MonoBehaviour
     Button _startButton;
     [SerializeField]
     Button _exitButton;
+    [SerializeField]
+    Button _galleryButton;
 
     void Awake()
     {
         _startButton.onClick.AddListener(_StartGame);
         _exitButton.onClick.AddListener(_ExitGame);
+        _galleryButton.onClick.AddListener(_LoadGallery);
     }
 
     void _StartGame()
@@ -26,5 +29,10 @@ public class Title : MonoBehaviour
     void _ExitGame()
     {
         Application.Quit();
+    }
+
+    void _LoadGallery()
+    {
+        SceneManager.LoadScene("Gallery");
     }
 }
